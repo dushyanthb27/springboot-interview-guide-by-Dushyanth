@@ -5,11 +5,11 @@ All notable changes to the Spring Boot Microservices Interview Guide will be doc
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [1.0.0] - 2026-08-30
 
 ### Added
 - Initial repository structure with 15 comprehensive sections
-- 200+ interview questions covering Spring Boot microservices
+- 198 interview questions covering Spring Boot microservices
 - Main README with quick start guide and study plans
 - Contributing guidelines with detailed templates
 - Supporting documentation (cheatsheets, glossary, resources)
@@ -42,12 +42,3 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Glossary of microservices and Spring terminology
 - Cheatsheets for annotations, configurations, and patterns
 - Resource links to official documentation and learning materials
-
-## [1.0.0] - 2026-08-30
-
-### Added
-- Initial release of Spring Boot Microservices Interview Guide
-- Complete repository structure
-- 200+ interview questions across 15 sections
-- Professional documentation and contribution guidelines
-- Modern Spring Boot 3.x examples with Java 17+

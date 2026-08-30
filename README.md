@@ -3,7 +3,7 @@
 ![Java](https://img.shields.io/badge/Java-17+-orange)
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.x-green)
 ![License](https://img.shields.io/badge/license-MIT-blue)
-![Questions](https://img.shields.io/badge/questions-200%2B-red)
+![Questions](https://img.shields.io/badge/questions-198-red)
 
 A comprehensive, production-ready interview guide for Spring Boot microservices architecture. This guide covers 200+ interview questions across 15 sections, from fundamentals to advanced architecture patterns, with modern Spring Boot 3.x and Java 17+ examples.
 
@@ -284,16 +284,18 @@ Containerization and orchestration for microservices deployment.
 ### 15. Advanced Architecture
 [→ View Section](./15-advanced-architecture/README.md)
 
-Advanced patterns including CQRS, event sourcing, and saga patterns.
+Advanced architectural patterns for enterprise-grade microservices.
 
 **Topics Covered:**
-- CQRS pattern implementation
-- Event sourcing with Kafka
-- Saga pattern for distributed transactions
-- API versioning strategies
-- Migration strategies
+- Strangler Fig pattern for migration
+- Sidecar and Ambassador patterns
+- Anti-Corruption Layer
+- Scalability design principles
+- Distributed caching and rate limiting
+- Multi-region deployment
+- Chaos engineering
 
-**Questions**: 14 | **Difficulty**: 🔴
+**Questions**: 14 | **Difficulty**: 🟡�
 
 ---
 
