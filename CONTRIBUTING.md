@@ -28,10 +28,12 @@ When adding new questions, please ensure:
 
 1. **Use the exact template format** - See [Question Template](#question-template) below
 2. **Choose appropriate difficulty** - Use the difficulty legend from the main README
-3. **Provide working code examples** - All code must be compilable and follow Spring Boot 3.x
-4. **Include all required sections** - Question, answer, code, insights, mistakes, follow-ups, related topics
-5. **Use modern Java syntax** - Java 17+ features where appropriate
-6. **Follow naming conventions** - Files should be named `01-topic-name.md`, `02-topic-name.md`, etc.
+3. **Write scenario-based questions** - Frame the prompt around a realistic engineering problem, team trade-off, or production incident instead of a pure definition question
+4. **Assess decision-making, not memorization** - Ask candidates to explain trade-offs, failure modes, and operational impact
+5. **Provide working code examples** - All code must be compilable and follow Spring Boot 3.x
+6. **Include all required sections** - Question, answer, code, insights, mistakes, follow-ups, related topics
+7. **Use modern Java syntax** - Java 17+ features where appropriate
+8. **Follow naming conventions** - Files should be named `01-topic-name.md`, `02-topic-name.md`, etc.
 
 ### Adding New Sections
 
@@ -114,6 +116,8 @@ import org.springframework.context.annotation.Configuration;
 ### Template Guidelines
 
 - **Difficulty Badge**: Choose one: 🟢 (Beginner), 🟡 (Intermediate), 🟠 (Advanced), 🔴 (Expert)
+- **Scenario-first wording**: Questions should reflect real product, team, or production problems, not just textbook definitions
+- **Trade-off analysis**: Encourage candidates to explain why they would choose a pattern, when it breaks down, and what they would monitor or evolve
 - **Answer Length**: Strictly follow the length guidelines based on difficulty
 - **Code Examples**: Must be complete, compilable Java code with proper imports
 - **Common Mistake**: Required for 🟠 and 🔴 questions, optional for 🟢 and 🟡

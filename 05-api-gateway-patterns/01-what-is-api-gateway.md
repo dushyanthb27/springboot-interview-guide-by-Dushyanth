@@ -2,13 +2,37 @@
 
 ## Question
 
-What is an API Gateway and what are its main benefits in microservices architecture?
+What is an API Gateway and what are its main benefits in microservices architecture? What are the potential downsides of using an API Gateway?
 
 ## Answer
 
 An API Gateway is a server that acts as a single entry point for all client requests to microservices. It handles cross-cutting concerns like routing, load balancing, authentication, rate limiting, caching, and monitoring. Clients communicate with the gateway instead of individual services, simplifying client-side logic and providing a unified interface.
 
-Benefits include simplified client code (clients only need to know the gateway URL), centralized cross-cutting concerns, optimized communication (aggregation of multiple service calls), security enforcement, and monitoring/logging at a single point. It acts as a reverse proxy that routes requests to appropriate backend services.
+**Key benefits:**
+
+1. **Simplified client code**: Clients only need to know the gateway URL instead of multiple service URLs. The gateway handles service discovery and routing.
+
+2. **Centralized cross-cutting concerns**: Authentication, authorization, rate limiting, logging, and monitoring are handled in one place instead of duplicated across services.
+
+3. **Request/response aggregation**: The gateway can make multiple calls to backend services and aggregate the results, reducing the number of client requests (e.g., fetching user profile, orders, and preferences in one call).
+
+4. **Protocol translation**: The gateway can translate between different protocols (e.g., HTTP to gRPC, WebSocket to HTTP) allowing clients and services to use different protocols.
+
+5. **Security enforcement**: Centralized authentication and authorization at the gateway prevents unauthorized access to backend services.
+
+6. **Load balancing**: The gateway can distribute traffic across multiple service instances.
+
+**Potential downsides:**
+
+1. **Single point of failure**: If the gateway fails, all client requests fail. Requires high availability with multiple gateway instances.
+
+2. **Performance bottleneck**: All traffic flows through the gateway, which can become a bottleneck. Requires careful capacity planning and scaling.
+
+3. **Increased latency**: Additional hop between client and services adds latency.
+
+4. **Complexity**: The gateway becomes a critical infrastructure component that must be maintained and debugged.
+
+5. **Coupling**: Can introduce coupling between clients and services if business logic leaks into the gateway.
 
 ## Code Example
 
@@ -39,13 +63,18 @@ public class GatewayConfig {
 
 ## 🎯 Interviewer Insight
 
-The interviewer wants to test your understanding of the API Gateway pattern and its role in microservices architecture.
+The interviewer wants to test your understanding of the API Gateway pattern and its role in microservices architecture. They're looking for awareness of both benefits and trade-offs. A strong answer demonstrates that you understand the gateway becomes a critical infrastructure component and requires careful design to avoid becoming a bottleneck or single point of failure.
+
+## ⚠️ Common Mistake
+
+Treating the API Gateway as a place to implement business logic. The gateway should handle cross-cutting concerns (routing, authentication, rate limiting) but not business logic, which creates tight coupling and makes the gateway difficult to maintain. Another mistake is not planning for high availability—if the gateway fails, the entire system becomes inaccessible.
 
 ## ⚡ Follow-up Questions
 
-1. What are the disadvantages of using an API Gateway?
-2. How does API Gateway differ from service mesh?
-3. What cross-cutting concerns can be handled by API Gateway?
+1. How does API Gateway differ from service mesh, and when would you use each?
+2. What cross-cutting concerns can be handled by API Gateway?
+3. How do you handle service-to-service communication—should it go through the gateway or direct?
+4. What is the Backend for Frontend (BFF) pattern, and how does it relate to API Gateway?
 
 ## 📚 Related Topics
 

@@ -5,7 +5,7 @@
 ![License](https://img.shields.io/badge/license-MIT-blue)
 ![Questions](https://img.shields.io/badge/questions-198-red)
 
-A comprehensive, production-ready interview guide for Spring Boot microservices architecture. This guide covers 200+ interview questions across 15 sections, from fundamentals to advanced architecture patterns, with modern Spring Boot 3.x and Java 17+ examples.
+A scenario-driven, production-ready interview guide for Spring Boot microservices architecture. This guide covers 200+ interview questions across 15 sections, from fundamentals to advanced architecture patterns, with modern Spring Boot 3.x and Java 17+ examples focused on real-world decision-making and trade-offs.
 
 ## 📚 Table of Contents
 

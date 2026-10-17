@@ -2,13 +2,51 @@
 
 ## Question
 
-What are the different ways to configure application properties in Spring Boot and how do you access them in your code?
+What are the different ways to configure application properties in Spring Boot, and how do you access them in your code? Explain the property loading order and how to handle environment-specific configurations.
 
 ## Answer
 
 Spring Boot provides multiple ways to configure application properties: application.properties or application.yml files, environment variables, command-line arguments, and @ConfigurationProperties classes. Properties can be externalized for different environments using profiles (application-dev.properties, application-prod.properties). You can access properties using @Value annotation, @ConfigurationProperties for type-safe binding, or Environment abstraction.
 
-Spring Boot loads properties from multiple locations in a specific order: command-line arguments, SPRING_APPLICATION_JSON, JNDI attributes, Java system properties, OS environment variables, RandomValuePropertySource, application-{profile}.properties outside packaged jar, application-{profile}.properties inside packaged jar, application.properties outside jar, and application.properties inside jar.
+**Property loading order (from highest to lowest priority):**
+1. Command-line arguments (`--server.port=8081`)
+2. SPRING_APPLICATION_JSON environment variable
+3. JNDI attributes from java:comp/env
+4. Java System properties (`System.getProperties()`)
+5. OS environment variables
+6. RandomValuePropertySource (for random values like `${random.int}`)
+7. application-{profile}.properties outside packaged jar
+8. application-{profile}.properties inside packaged jar
+9. application.properties outside packaged jar
+10. application.properties inside packaged jar
+11. @PropertySource annotations on configuration classes
+12. Default properties (specified by SpringApplication.setDefaultProperties)
+
+**Configuration approaches:**
+
+1. **@Value**: Simple for individual properties, but less type-safe
+   ```java
+   @Value("${app.timeout:5000}")
+   private int timeout;
+   ```
+
+2. **@ConfigurationProperties**: Type-safe binding, recommended for groups of related properties
+   - Provides validation via JSR-303 annotations
+   - Supports nested properties
+   - Better IDE support and refactoring
+   - Can be immutable with @ConstructorBinding
+
+3. **Environment abstraction**: Programmatic access to all properties
+   ```java
+   @Autowired
+   private Environment env;
+   env.getProperty("app.timeout");
+   ```
+
+**Environment-specific configurations:**
+- Use profiles: `application-dev.properties`, `application-prod.properties`
+- Activate with: `spring.profiles.active=dev` or `--spring.profiles.active=dev`
+- Spring Boot loads profile-specific files after the default file, overriding properties
 
 ## Code Example
 

@@ -2,13 +2,41 @@
 
 ## Question
 
-What is dependency injection in Spring Boot and what are the different types of dependency injection available?
+What is dependency injection in Spring Boot and what are the different types of dependency injection available? Which type is recommended and why?
 
 ## Answer
 
-Dependency injection (DI) is a design pattern where dependencies are provided to a class rather than the class creating them, promoting loose coupling and easier testing. Spring Boot implements DI through its IoC (Inversion of Control) container, which manages bean creation and dependency resolution.
+Dependency injection (DI) is a design pattern where dependencies are provided to a class rather than the class creating them, promoting loose coupling and easier testing. Spring Boot implements DI through its IoC (Inversion of Control) container, which manages bean creation and dependency resolution. The container is responsible for instantiating, configuring, and assembling beans.
 
-The main types of dependency injection in Spring are constructor injection (recommended for mandatory dependencies), setter injection (for optional dependencies), field injection (discouraged due to testing difficulties), and method injection (for complex scenarios). Constructor injection is preferred as it makes dependencies explicit, enables immutability, and facilitates unit testing.
+**Types of dependency injection in Spring:**
+
+1. **Constructor Injection (Recommended)**: Dependencies are provided through the class constructor. This is the preferred approach for mandatory dependencies because:
+   - Makes dependencies explicit and required
+   - Enables immutability (dependencies can be final)
+   - Facilitates unit testing (can easily pass mocks without Spring context)
+   - Ensures the object is always in a valid state after construction
+   - Works well with Java's final fields
+
+2. **Setter Injection**: Dependencies are provided through setter methods. Used for optional dependencies that may not be required for the object to function. Less preferred because:
+   - Dependencies can be null, requiring null checks
+   - Doesn't guarantee immutability
+   - Object may be in invalid state between construction and dependency injection
+
+3. **Field Injection (Discouraged)**: Dependencies are injected directly into fields using @Autowired. This approach is discouraged because:
+   - Makes dependencies implicit (not visible in constructor)
+   - Harder to test (requires reflection or Spring TestContext)
+   - Prevents fields from being final
+   - Hides dependencies from the class API
+   - Can lead to tight coupling to Spring
+
+4. **Method Injection**: Used for complex scenarios where dependencies need to be injected into non-setter methods. Rarely needed in typical applications.
+
+**Why constructor injection is preferred:**
+- Clear intent: Required dependencies are visible in the constructor
+- Immutability: Dependencies can be declared final
+- Testability: Easy to instantiate with mock dependencies
+- Validation: Constructor validates dependencies at object creation time
+- IDE support: IDEs can help generate constructors automatically
 
 ## Code Example
 
